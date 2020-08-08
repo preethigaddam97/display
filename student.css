@@ -1,0 +1,28 @@
+<style>
+        th, td, p, input, h3 {
+            font:15px 'Segoe UI';
+        }
+        table, th, td {
+            border: solid 1px black;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+            border-color: black;
+        }
+        th {
+            font-weight:bold;
+            font-style: italic;
+        }
+        tr:nth-child(3)
+        {
+         color:red; 
+        }
+        tr:nth-child(4){
+          color:green;
+        }
+        th:{
+          font-style: italic;
+        }
+        
+        
+    </style>

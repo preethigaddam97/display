@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1 style="text-align: center; font-weight:bold;"> Student Registration Form</h1>
+            </div>
+
+            <div class="card-body">
+                <form onsubmit="validate()">
+
+                    <div class="form-group row">
+                        <label for="Name" class="col-sm-2 col-form-label"> *First Name</label>
+                        <div class="col-sm-10">
+                            <input type="Name" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="LastName" class="col-sm-2 col-form-label">*Last Name</label>
+                        <div class="col-sm-10">
+                            <input type="LastName" class="form-control" id="LastName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="Classname" class="col-sm-2 col-form-label">*Class</label>
+                        <div class="col-sm-10">
+                            <input type="Classname" class="form-control" id="Classname">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="yearOfPassing" class="col-sm-2 col-form-label">*Year of Passing</label>
+                        <div class="col-sm-10">
+                            <input type="yearOfPassing" class="form-control" id="yearOfPassing">(Year cannot be > 2017)
+                            <!-- <input type="number" class="form-control" id="age" name="age" min="1900" max="2017"
+                                placeholder="max range is 2017">-->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="percentage" class="col-sm-2 col-form-label">*Percentage of Marks</label>
+                        <div class="col-sm-10">
+                            <input type="percentage" class="form-control" id="percentage">
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mb-2" id="yourButtonID" disabled>Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        var Name = document.getElementById('inputPassword').value;
+        var LastName = document.getElementById('LastName').value;
+        var Class = document.getElementById('Classname').value;
+        var yearOfPassing = document.getElementById('yearOfPassing').value;
+        var Percentage = document.getElementById('percentage').value;
+
+        document.getElementById('inputPassword').addEventListener('change', displayCOndition)
+        document.getElementById('LastName').addEventListener('change', displayCOndition)
+        document.getElementById('Classname').addEventListener('change', displayCOndition)
+        document.getElementById('yearOfPassing').addEventListener('change', displayCOndition)
+        document.getElementById('percentage').addEventListener('change', displayCOndition)
+
+        function validate() {
+            var NameREGX = /^[a-zA-z]{1,20}$/;
+            var LastNameREGX = /^[a-zA-z]{1,20}$/;
+            var classREGX = /^[a-zA-Z0-9_.-]*$/;
+            var yearOfPassingREGX = /^20[0-1][0-7]$/;
+            var percentageREGX = /^[0-9]+$/;
+
+        
+
+            alert("First Name :  " + nameResult + ",\nLast Name :  " + lastNameResult + ", \nClass : " + classNameResult + " ,\nYear of passing : " + yearpassingResult + ",\nPercentage : " + percentageResult);
+
+            return false;
+        }
+
+        function displayCOndition() {
+            var NameREGX = /^[a-zA-z]{1,20}$/;
+            var LastNameREGX = /^[a-zA-z]{1,20}$/;
+            var classREGX = /^[a-zA-Z0-9_.-]*$/;
+            var yearOfPassingREGX = /^20[0-1][0-7]$/;
+            var percentageREGX = /^[0-9]+$/;
+
+            nameResult = NameREGX.test(document.getElementById('inputPassword').value);
+            lastNameResult = LastNameREGX.test(document.getElementById('LastName').value);
+            classNameResult = classREGX.test(document.getElementById('Classname').value);
+            yearpassingResult = yearOfPassingREGX.test(document.getElementById('yearOfPassing').value);
+            percentageResult = percentageREGX.test(document.getElementById('percentage').value);
+            console.log(nameResult, lastNameResult, classNameResult, yearpassingResult, percentageResult)
+            if (nameResult && lastNameResult && classNameResult && yearpassingResult && percentageResult) {
+                document.getElementById("yourButtonID").removeAttribute("disabled");
+            } else {
+                document.getElementById("yourButtonID").setAttribute("disabled","");
+            }
+        }
+    </script>
+</body>
+
+</html>
